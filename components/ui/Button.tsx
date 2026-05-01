@@ -42,6 +42,7 @@ export default function Button({
       <Link
         href={href}
         className={classes}
+        onClick={onClick}
         {...(download !== undefined ? { download } : {})}
       >
         {children}
