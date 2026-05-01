@@ -5,6 +5,7 @@ import Trailer from '@/components/sections/Trailer'
 import DownloadCta from '@/components/sections/DownloadCta'
 import StudioAbout from '@/components/sections/StudioAbout'
 import GamesGrid from '@/components/sections/GamesGrid'
+import PressSection from '@/components/sections/PressSection'
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <DownloadCta />
       <StudioAbout />
       <GamesGrid />
+      <PressSection />
     </main>
   )
 }
