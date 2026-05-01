@@ -10,7 +10,7 @@ export default function SectionHeading({
   className = '',
 }: SectionHeadingProps) {
   return (
-    <div className={`text-center ${className}`}>
+    <div className={`${className} text-center`}>
       {eyebrow && (
         <p className="text-accent text-xs font-semibold tracking-[0.2em] uppercase mb-3">
           {eyebrow}
