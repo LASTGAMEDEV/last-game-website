@@ -6,7 +6,6 @@ import DownloadCta from '@/components/sections/DownloadCta'
 import StudioAbout from '@/components/sections/StudioAbout'
 import GamesGrid from '@/components/sections/GamesGrid'
 import Roadmap from '@/components/sections/Roadmap'
-import PressSection from '@/components/sections/PressSection'
 
 export default function Home() {
   return (
@@ -19,7 +18,6 @@ export default function Home() {
       <StudioAbout />
       <GamesGrid />
       <Roadmap />
-      <PressSection />
     </main>
   )
 }
