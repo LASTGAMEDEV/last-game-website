@@ -39,7 +39,7 @@ export default function Nav() {
           <Link href="/#last-acre" className={linkClass}>Last Acre</Link>
           <Link href="/#studio" className={linkClass}>Studio</Link>
           <Link href="/press" className={linkClass}>Press</Link>
-          <Button href="/#download" variant="primary" size="sm">Download</Button>
+          <Button href="/#download" variant="ghost" size="sm">Coming Soon</Button>
         </div>
 
         {/* Mobile hamburger */}
@@ -58,8 +58,8 @@ export default function Nav() {
           <Link href="/#last-acre" className={linkClass} onClick={() => setMenuOpen(false)}>Last Acre</Link>
           <Link href="/#studio" className={linkClass} onClick={() => setMenuOpen(false)}>Studio</Link>
           <Link href="/press" className={linkClass} onClick={() => setMenuOpen(false)}>Press</Link>
-          <Button href="/#download" variant="primary" size="sm" className="self-start" onClick={() => setMenuOpen(false)}>
-            Download
+          <Button href="/#download" variant="ghost" size="sm" className="self-start" onClick={() => setMenuOpen(false)}>
+            Coming Soon
           </Button>
         </div>
       )}

@@ -13,8 +13,8 @@ const facts = [
   { label: 'Game', value: 'Last Acre' },
   { label: 'Genre', value: 'Farming Simulation' },
   { label: 'Platforms', value: 'iOS & Android' },
-  { label: 'Price', value: 'Free to download' },
-  { label: 'Release', value: '2026' },
+  { label: 'Price', value: 'Free to play' },
+  { label: 'Release', value: 'TBA' },
 ]
 
 export default function PressPage() {

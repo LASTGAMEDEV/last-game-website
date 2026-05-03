@@ -1,11 +1,10 @@
 import type { Metadata } from 'next'
-import AppStoreBadge from '@/components/ui/AppStoreBadge'
 import Features from '@/components/sections/Features'
 
 export const metadata: Metadata = {
   title: 'Last Acre — Last Game',
   description:
-    'Last Acre is a farming simulation grounded in real agriculture, genetics, and market forces. Download free on iOS and Android.',
+    'Last Acre is a farming simulation in development, grounded in real agriculture, genetics, and market forces. Coming soon to iOS and Android.',
 }
 
 export default function LastAcrePage() {
@@ -24,10 +23,10 @@ export default function LastAcrePage() {
             A farming simulation grounded in real agriculture, real animal genetics, and real
             market forces. Start with nothing. Build everything.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <AppStoreBadge store="apple" />
-            <AppStoreBadge store="google" />
-          </div>
+          <span className="inline-flex items-center gap-2 border border-accent/40 text-accent text-xs font-semibold tracking-[0.2em] uppercase px-4 py-2 rounded-full">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+            In Development
+          </span>
         </div>
       </section>
 
@@ -36,16 +35,12 @@ export default function LastAcrePage() {
       <section className="py-24 px-6 bg-surface">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-accent text-xs font-semibold tracking-[0.2em] uppercase mb-3">
-            Availability
+            Platforms
           </p>
           <h2 className="font-serif text-3xl font-bold text-cream mb-4">
-            Available on iOS &amp; Android
+            Coming to iOS &amp; Android
           </h2>
-          <p className="text-muted mb-8">Free to download. No upfront cost.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <AppStoreBadge store="apple" />
-            <AppStoreBadge store="google" />
-          </div>
+          <p className="text-muted">Release date to be announced.</p>
         </div>
       </section>
     </main>

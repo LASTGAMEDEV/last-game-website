@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import AppStoreBadge from '@/components/ui/AppStoreBadge'
 
 export default function Hero() {
   return (
@@ -54,13 +53,16 @@ export default function Hero() {
           </motion.p>
 
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col items-center gap-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
           >
-            <AppStoreBadge store="apple" />
-            <AppStoreBadge store="google" />
+            <span className="inline-flex items-center gap-2 border border-accent/40 text-accent text-xs font-semibold tracking-[0.2em] uppercase px-4 py-2 rounded-full">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+              In Development
+            </span>
+            <p className="text-muted/70 text-sm tracking-wide">Coming soon to iOS &amp; Android</p>
           </motion.div>
         </motion.div>
       </div>
