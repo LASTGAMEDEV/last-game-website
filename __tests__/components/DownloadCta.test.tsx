@@ -32,7 +32,7 @@ it('shows success message after successful submission', async () => {
 it('shows error message after failed submission', async () => {
   ;(global.fetch as jest.Mock).mockResolvedValueOnce({
     ok: false,
-    json: async () => ({ error: 'Failed' }),
+    json: async () => ({ error: 'Email already subscribed' }),
   })
 
   render(<DownloadCta />)
@@ -40,7 +40,19 @@ it('shows error message after failed submission', async () => {
   await userEvent.click(screen.getByRole('button', { name: /notify me/i }))
 
   await waitFor(() => {
-    expect(screen.getByText(/something went wrong/i)).toBeInTheDocument()
+    expect(screen.getByText('Email already subscribed')).toBeInTheDocument()
+  })
+})
+
+it('shows fallback error message on network failure', async () => {
+  ;(global.fetch as jest.Mock).mockRejectedValueOnce(new Error('Network error'))
+
+  render(<DownloadCta />)
+  await userEvent.type(screen.getByPlaceholderText('your@email.com'), 'user@example.com')
+  await userEvent.click(screen.getByRole('button', { name: /notify me/i }))
+
+  await waitFor(() => {
+    expect(screen.getByText('Something went wrong. Try again.')).toBeInTheDocument()
   })
 })
 

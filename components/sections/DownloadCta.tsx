@@ -5,6 +5,7 @@ import { useState } from 'react'
 export default function DownloadCta() {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState('Something went wrong. Try again.')
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -15,10 +16,16 @@ export default function DownloadCta() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
       })
-      if (!res.ok) throw new Error()
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        setErrorMessage(data.error ?? 'Something went wrong. Try again.')
+        setStatus('error')
+        return
+      }
       setStatus('success')
       setEmail('')
     } catch {
+      setErrorMessage('Something went wrong. Try again.')
       setStatus('error')
     }
   }
@@ -44,6 +51,7 @@ export default function DownloadCta() {
           >
             <input
               type="email"
+              aria-label="Email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="your@email.com"
@@ -61,9 +69,7 @@ export default function DownloadCta() {
         )}
 
         {status === 'error' && (
-          <p className="text-bg/60 text-sm mt-4">
-            Something went wrong. Try again.
-          </p>
+          <p className="text-bg/60 text-sm mt-4">{errorMessage}</p>
         )}
       </div>
     </section>
