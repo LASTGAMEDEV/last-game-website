@@ -3,11 +3,6 @@ import { Resend } from 'resend'
 import { validateEmail, buildContactPayload } from '@/lib/subscribe'
 
 export async function POST(request: Request) {
-  if (!process.env.RESEND_API_KEY) {
-    return NextResponse.json({ error: 'Server misconfigured' }, { status: 500 })
-  }
-  const resend = new Resend(process.env.RESEND_API_KEY)
-
   const body = await request.json().catch(() => ({}))
   const email = typeof body.email === 'string' ? body.email.trim() : ''
 
@@ -15,10 +10,13 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Invalid email' }, { status: 400 })
   }
 
+  const apiKey = process.env.RESEND_API_KEY
   const audienceId = process.env.RESEND_AUDIENCE_ID
-  if (!audienceId) {
+  if (!apiKey || !audienceId) {
     return NextResponse.json({ error: 'Server misconfigured' }, { status: 500 })
   }
+
+  const resend = new Resend(apiKey)
 
   // Note: audienceId is the legacy Resend field (deprecated in favour of segments).
   // Works on current SDK (v6.x) — migrate when Resend removes the overload.

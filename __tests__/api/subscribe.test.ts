@@ -2,6 +2,7 @@
  * @jest-environment node
  */
 import { POST } from '@/app/api/subscribe/route'
+import { Resend } from 'resend'
 
 // Mock the Resend module
 jest.mock('resend', () => ({
@@ -57,6 +58,7 @@ describe('POST /api/subscribe', () => {
     expect(res.status).toBe(500)
     const body = await res.json()
     expect(body).toEqual({ error: 'Server misconfigured' })
+    expect(Resend).not.toHaveBeenCalled()
   })
 
   it('returns 500 when Resend returns an error', async () => {
@@ -77,5 +79,17 @@ describe('POST /api/subscribe', () => {
     expect(res.status).toBe(200)
     const body = await res.json()
     expect(body).toEqual({ success: true })
+  })
+
+  it('returns 400 for a non-JSON body', async () => {
+    const req = new Request('http://localhost/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: 'not-json',
+    })
+    const res = await POST(req)
+    expect(res.status).toBe(400)
+    const body = await res.json()
+    expect(body).toEqual({ error: 'Invalid email' })
   })
 })
