@@ -24,6 +24,7 @@ export default function Trailer() {
             <iframe
               className="w-full h-full"
               src={`https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&rel=0`}
+              sandbox="allow-scripts allow-same-origin allow-presentation"
               allow="autoplay; fullscreen; picture-in-picture"
               allowFullScreen
               title="Last Acre — Official Trailer"

@@ -1,8 +1,27 @@
 import { NextResponse } from 'next/server'
+import { Ratelimit } from '@upstash/ratelimit'
+import { Redis } from '@upstash/redis'
 import { Resend } from 'resend'
 import { validateEmail, buildContactPayload } from '@/lib/subscribe'
 
+let ratelimit: Ratelimit | null = null
+if (process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN) {
+  ratelimit = new Ratelimit({
+    redis: Redis.fromEnv(),
+    limiter: Ratelimit.slidingWindow(5, '60 s'),
+    prefix: 'subscribe',
+  })
+}
+
 export async function POST(request: Request) {
+  if (ratelimit) {
+    const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'anonymous'
+    const { success } = await ratelimit.limit(ip)
+    if (!success) {
+      return NextResponse.json({ error: 'Too many requests' }, { status: 429 })
+    }
+  }
+
   const body = await request.json().catch(() => ({}))
   const email = typeof body.email === 'string' ? body.email.trim() : ''
 
