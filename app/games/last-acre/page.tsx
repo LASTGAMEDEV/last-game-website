@@ -2,9 +2,36 @@ import type { Metadata } from 'next'
 import Features from '@/components/sections/Features'
 
 export const metadata: Metadata = {
-  title: 'Last Acre — Last Game',
+  metadataBase: new URL('https://www.lastgamestudio.com'),
+  title: 'Last Acre — A Realistic Farming Simulation | Last Game',
   description:
-    'Last Acre is a farming simulation in development, grounded in real agriculture, genetics, and market forces. Coming soon to iOS and Android.',
+    'Start with nothing. Build everything. Last Acre is a farming simulation grounded in real agriculture, real animal genetics, and real market forces. Coming soon to iOS and Android.',
+  alternates: {
+    canonical: '/games/last-acre',
+  },
+  openGraph: {
+    title: 'Last Acre — A Realistic Farming Simulation | Last Game',
+    description:
+      'Start with nothing. Build everything. A farming simulation grounded in real agriculture, real animal genetics, and real market forces. Coming soon to iOS & Android.',
+    type: 'website',
+    siteName: 'Last Game Studio',
+    url: 'https://www.lastgamestudio.com/games/last-acre',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Last Acre — Your land. Your legacy.',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Last Acre — A Realistic Farming Simulation | Last Game',
+    description:
+      'Start with nothing. Build everything. A farming simulation grounded in real agriculture, real animal genetics, and real market forces. Coming soon to iOS & Android.',
+    images: ['/og-image.jpg'],
+  },
 }
 
 export default function LastAcrePage() {
