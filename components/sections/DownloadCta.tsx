@@ -31,13 +31,13 @@ export default function DownloadCta() {
   }
 
   return (
-    <section id="kickstarter" className="bg-accent py-24 px-6">
+    <section id="waitlist" className="bg-accent py-24 px-6">
       <div className="max-w-3xl mx-auto text-center">
         <h2 className="font-serif text-5xl md:text-7xl font-black text-bg leading-tight mb-4">
-          Coming to Kickstarter.
+          Get Notified on Launch.
         </h2>
         <p className="text-bg/60 text-lg md:text-xl mb-12">
-          Last Acre is launching on Kickstarter. Leave your email and we'll notify you the moment it's live.
+          Be the first to play. Leave your email and we'll notify you the moment Last Acre launches on iOS and Android.
         </p>
 
         {status === 'success' ? (

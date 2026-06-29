@@ -38,8 +38,7 @@ export default function Nav() {
         <div className="hidden md:flex items-center gap-8">
           <Link href="/#last-acre" className={linkClass}>Last Acre</Link>
           <Link href="/#studio" className={linkClass}>Studio</Link>
-          {/* Update href to live Kickstarter URL when campaign goes live */}
-          <Button href="#kickstarter" variant="primary" size="sm">Back on Kickstarter</Button>
+          <Button href="#waitlist" variant="primary" size="sm">Join the Waitlist</Button>
         </div>
 
         {/* Mobile hamburger */}
@@ -57,9 +56,8 @@ export default function Nav() {
         <div className="md:hidden bg-surface/98 backdrop-blur-md border-t border-white/5 px-6 py-5 flex flex-col gap-5">
           <Link href="/#last-acre" className={linkClass} onClick={() => setMenuOpen(false)}>Last Acre</Link>
           <Link href="/#studio" className={linkClass} onClick={() => setMenuOpen(false)}>Studio</Link>
-          {/* Update href to live Kickstarter URL when campaign goes live */}
-          <Button href="#kickstarter" variant="primary" size="sm" className="self-start" onClick={() => setMenuOpen(false)}>
-            Back on Kickstarter
+          <Button href="#waitlist" variant="primary" size="sm" className="self-start" onClick={() => setMenuOpen(false)}>
+            Join the Waitlist
           </Button>
         </div>
       )}
